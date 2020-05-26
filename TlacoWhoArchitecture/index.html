@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <title>Tlaco Adivina</title>
+
+<script src="jquery.min.js" type="text/javascript"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap.min.css">
+    <style>.thumbnail{ height: 185px;}
+    </style>
+</head>
+<body>
+    <audio controls loop>
+        <source src="ViolinOrchestra.mp3" type="audio/mp3">
+            Tu navegador no soporta audio HTML5.
+    </audio>
+    <div class="container text-center">
+        <br/>
+        <div class="row">
+           <div class="col-md-3"><img src=""/></div> 
+            <div class="col-md-6"><h2><div id="puntuacion">Puntos: 0</div></h2></div> 
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- lateral -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-4331617637495482"
+     data-ad-slot="7438564459"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+            <div class="col-md-4" id="arrastrarMonumento" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="col-md-4"></div>
+        </div>
+        
+        <div class="row text-center" id="monumentos"></div>
+        
+    </div>
+    <script>
+        
+	var MonumentosTlaco = ["AlamedaJuarez", "Biblioteca",
+    "CasaArtesanal", "CasaCultura", "Corredor",
+    "Culata", "IglesiaSanMiguel","Jarochos", "Kiosco", "Mercado",
+    "MuseoSalvadorFerrando", "Palacio", "Panteon", "ParqueBravo", "ParqueColon", 
+    "ParqueMadres", "ParroquiaSanCristobal", "Pilar", "PlazaHidalgo", 
+    "PlazaMartha", "PlazaZaragoza", "PlazuelaAgustinLara", 
+    "Puerta", "SantuarioCandelaria", "Teatro", "Tejas", "Ventana"];
+    
+        
+        
+    var MonumentosJuego = [],indice,item,tiempo,puntos = 0, fallos = 0;
+    $(document).ready(function(){ IniciarJuego();});
+        
+        function IniciarJuego(){
+            MonumentosTlaco = ["AlamedaJuarez", "Biblioteca",
+            "CasaArtesanal", "CasaCultura", "Corredor",
+            "Culata", "IglesiaSanMiguel","Jarochos", "Kiosco", "Mercado",
+            "MuseoSalvadorFerrando", "Palacio", "Panteon", "ParqueBravo", "ParqueColon", 
+            "ParqueMadres", "ParroquiaSanCristobal", "Pilar", "PlazaHidalgo", 
+            "PlazaMartha", "PlazaZaragoza", "PlazuelaAgustinLara", 
+            "Puerta", "SantuarioCandelaria", "Teatro", "Tejas", "Ventana"];
+            MonumentosJuego = [];
+            indice = 0;
+            item = 0;
+           
+        for(contador = 0; contador < 3; contador ++){
+            indice=Math.floor(Math.random()*MonumentosTlaco.length);
+            item = MonumentosTlaco [indice];
+            MonumentosJuego.push(item);
+            MonumentosTlaco.splice(indice,1);
+        }
+
+        indice=Math.floor(Math.random()*MonumentosJuego.length);
+        item = MonumentosJuego[indice];
+            
+           $("#monumentos").empty();
+           $("#arrastrarMonumento").empty();
+            
+           clearInterval(tiempo);
+            
+           $.each(MonumentosJuego, function( contador, valor ) {
+               
+            $("#monumentos").append('<div class="col-xs-4 col-md-4" ><a href="#" class="thumbnail"><img src="'+valor+'.jpg" id='+valor+' draggable="true" ondragstart="drag(event)" style="cursor:move" /></a></div>');
+               
+        });
+        $("#arrastrarMonumento").append('<a href="#" class="thumbnail"></a><h3><span class="label label-danger">'+item+"</span></h3><br/>");
+         
+        }
+function allowDrop(ev) { ev.preventDefault();}
+function drag(ev) {ev.dataTransfer.setData("text", ev.target.id);}
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    if(data==item){
+    ev.target.appendChild(document.getElementById(data));      
+            puntos++;
+            $("#puntuacion").html('<span class="label label-default">Puntuación: '+puntos+'</span>');
+           tiempo=setInterval(function(){ IniciarJuego(); }, 800);
+           if(puntos == 20){
+                alert("¡Felicidades! Has ganado, increíble trabajo!");
+                puntos = 0;
+                fallos = 0;
+                $("#puntuacion").html('Puntos: '+puntos+'');
+                
+            }
+    }else{
+        alert("¡Oh oh, respuesta incorrecta!");
+        fallos ++;
+    }
+    if(fallos == 3){
+        alert("¡Perdiste!"+" obtuviste "+puntos+" puntos");
+        puntos = 0;
+        fallos = 0;
+        $("#puntuacion").html('Puntos: '+puntos+'');
+        tiempo=setInterval(function(){ IniciarJuego(); }, 800);
+    }
+}
+</script>
+</body>
+
+</html>
