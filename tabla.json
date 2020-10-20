@@ -1,69 +1,59 @@
 [
     {
-        "id": 1,
         "nombre": "Rafael Andrade",
         "email": "andrade@gmail.com",
         "matricula": "S17012910",
         "estado": true
     },
     {
-        "id": 2,
         "nombre": "Juan Suárez",
         "email": "suarez@gmail.com",
         "matricula": "S17012911",
         "estado": true
     },
     {
-        "id": 3,
         "nombre": "Rafael Colorado",
         "email": "colorado@gmail.com",
         "matricula": "S17012912",
         "estado": true
     },
     {
-        "id": 4,
         "nombre": "Luis Onofre",
         "email": "onofre@gmail.com",
         "matricula": "S17012913",
         "estado": false
     },
     {
-        "id": 5,
         "nombre": "Raúl Condado",
         "email": "condado@gmail.com",
         "matricula": "S17012914",
         "estado": false
     },
     {
-        "id": 6,
         "nombre": "Mauricio Cruz",
         "email": "cruz@gmail.com",
         "matricula": "S17012915",
         "estado": true
     },
     {
-        "id": 7,
         "nombre": "Bruno Luján",
         "email": "lujan@gmail.com",
         "matricula": "S17012916",
         "estado": true
     },
     {
-        "id": 8,
         "nombre": "Jerzy López",
         "email": "jerzy@gmail.com",
         "matricula": "S17012917",
         "estado": false
     },
     {
-        "id": 9,
         "nombre": "Luis Olivo",
         "email": "olivo@gmail.com",
         "matricula": "S17012918",
         "estado": true
     },
     {
-        "id": 10,
         "nombre": "Arturo Gómez",
         "email": "gomez@gmail.com",
         "matricula": "S17012919",
